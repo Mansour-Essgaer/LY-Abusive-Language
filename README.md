@@ -28,16 +28,6 @@ To foster open science and reproducibility, we are releasing the curated corpus 
 | **Guiraud’s R** | 54.5804 | Standardized measure confirming lexical diversity |
 | **Herdan’s C** | 0.9349 | Value close to 1.0 proves highly varied linguistic patterns |
 
-### 📁 Data Format
-The dataset is provided in a structured CSV/JSON format (see `data/` directory):
-```json
-{
-  "id": "doc_001",
-  "original_text": "Original raw Arabic text from social media",
-  "cleaned_text": "Preprocessed text (no URLs, digits, or punctuation)",
-  "tokens": ["token1", "token2", "token3"],
-  "dialect": "Libyan"
-}
 
 
 # 📜 Uncovering Linguistic Patterns in Libyan Dialect Abusive Language
