@@ -1,33 +1,3 @@
-# 📜 Uncovering Linguistic Patterns in Libyan Dialect Abusive Language
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Dataset Available](https://img.shields.io/badge/Dataset-Available-green.svg)](#-dataset-description)
-[![Citation](https://img.shields.io/badge/Cite-This_Work-orange.svg)](#-citation)
-
-> **Official Repository** for the paper: *"Uncovering Linguistic Patterns in Libyan Dialect Abusive Language: An Association Rule Mining Approach Using FP-Growth"*
-
-## 📌 Overview
-The proliferation of abusive language on social media presents a significant challenge for content moderation, particularly for morphologically rich and dialectally diverse languages like Arabic. This repository accompanies our research that moves beyond traditional classification methods to analyze the **compositional structure of toxic discourse** within the **Libyan Arabic dialect**.
-
-By applying the **FP-Growth algorithm** (Frequent Pattern Mining), we uncover a "grammar of toxicity," revealing that abusive language is not a random assortment of keywords but follows predictable, compositional patterns. We successfully identified complex, multi-word rules (e.g., two-word phrases predicting a third word) with perfect confidence scores and exceptionally high lift values (up to 429.2), representing fixed idiomatic insults.
-
----
-
-## 📊 Dataset Description
-To foster open science and reproducibility, we are releasing the curated corpus used in this study. The dataset is specifically tailored for Arabic NLP researchers focusing on dialectal variations, toxic language detection, and pattern mining.
-
-### 📈 Corpus Statistics
-| Metric | Value | Interpretation |
-| :--- | :--- | :--- |
-| **Number of Documents** | 2,146 | Short, concise online comments |
-| **Total Tokens** | 9,872 | Post-preprocessing vocabulary |
-| **Unique Tokens (Vocabulary)** | 5,423 | High lexical richness |
-| **Avg. Tokens per Document** | 4.60 | Characteristic of social media comments |
-| **Type-Token Ratio (TTR)** | 0.5493 | Indicates non-repetitive, diverse vocabulary |
-| **Guiraud’s R** | 54.5804 | Standardized measure confirming lexical diversity |
-| **Herdan’s C** | 0.9349 | Value close to 1.0 proves highly varied linguistic patterns |
-
 
 
 # 📜 Uncovering Linguistic Patterns in Libyan Dialect Abusive Language
@@ -88,14 +58,6 @@ To ensure high linguistic validity and prepare the text for rigorous pattern min
 4. **Feature Engineering (Unigram Generation)**: Each document $D$ was tokenized into a set of terms, creating a transaction $T = \{t_1, t_2, ..., t_k\}$, transforming the corpus into a transactional database suitable for FP-Growth.
 
 ---
-
-## 🧪 Benchmark Results: Baseline Association Rules
-Unlike traditional supervised benchmarks that report Accuracy or F1-scores, this repository establishes a **Pattern Mining Baseline**. We provide the highest-confidence and highest-lift association rules discovered using the FP-Growth algorithm ($\text{min\_support} = 0.0006$, $\text{min\_confidence} = 0.1$). 
-
-These metrics serve as a benchmark for evaluating context-aware toxicity detection systems. The strength of a rule $X \rightarrow Y$ is evaluated as:
-- **Confidence**: $P(Y|X) = \frac{\text{support}(X \cup Y)}{\text{support}(X)}$
-- **Lift**: $\frac{\text{support}(X \cup Y)}{\text{support}(X) \times \text{support}(Y)}$
-
 ### Simple Associations (1 $\rightarrow$ 1)
 *Foundational pairings acting as the "subject-predicate" grammar of insults.*
 
