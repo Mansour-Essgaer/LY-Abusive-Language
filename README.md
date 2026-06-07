@@ -120,38 +120,6 @@ These metrics serve as a benchmark for evaluating context-aware toxicity detecti
 
 ---
 
-## 💻 Reproducibility: Mining the Baseline Rules
-To help researchers quickly replicate our FP-Growth analysis, we provide a Python snippet using the `mlxtend` library. 
-
-```python
-import pandas as pd
-import ast
-from mlxtend.preprocessing import TransactionEncoder
-from mlxtend.frequent_patterns import fpgrowth, association_rules
-
-# 1. Load the dataset 
-df = pd.read_csv('data/libyan_abusive_corpus.csv')
-# Convert stringified lists back to actual Python lists
-transactions = df['tokens'].apply(ast.literal_eval).tolist()
-
-# 2. One-hot encode the transactions
-te = TransactionEncoder()
-te_ary = te.fit(transactions).transform(transactions)
-df_encoded = pd.DataFrame(te_ary, columns=te.columns_)
-
-# 3. Apply FP-Growth Algorithm
-frequent_itemsets = fpgrowth(df_encoded, min_support=0.0006, use_colnames=True)
-
-# 4. Generate Association Rules
-rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.1)
-
-# 5. Filter for the most potent complex rules (e.g., exactly 2 antecedents)
-complex_rules = rules[rules['antecedents'].apply(lambda x: len(x) == 2)]
-top_complex = complex_rules.sort_values(by='lift', ascending=False).head()
-
-print(top_complex[['antecedents', 'consequents', 'confidence', 'lift']])
-
-
 ## 🎯 Intended Use
 This dataset and repository are designed for:
 - **Unsupervised Pattern Mining**: Benchmarking frequent itemset and association rule algorithms in morphologically rich languages.
